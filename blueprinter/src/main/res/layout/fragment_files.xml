@@ -1,17 +1,15 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
-    <ScrollView
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent">
+<ScrollView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
         <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
             tools:context="com.shudas.blueprinter.FilesFragment"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:id="@+id/filesLinLayout" >
 
             <TextView
                 android:layout_width="fill_parent"
@@ -37,17 +35,18 @@
                 android:paddingLeft="@dimen/servCatPadL"
                 android:paddingTop="@dimen/servCatPad"
                 android:paddingRight="@dimen/servCatPad"
-                android:paddingBottom="@dimen/servCatPad" />
+                android:paddingBottom="@dimen/servCatPad"
+                android:id="@+id/connservsLabel"/>
 
             <!--<ListView-->
             <!--android:layout_width="match_parent"-->
             <!--android:layout_height="wrap_content"-->
             <!--android:id="@+id/connServList" />-->
 
-            <fragment android:name="com.shudas.blueprinter.ActiveServListFrag"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                tools:layout="@layout/activeserv_listfragment" />
+            <!--<fragment android:name="com.shudas.blueprinter.ActiveServListFrag"-->
+                <!--android:layout_width="fill_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--tools:layout="@layout/activeserv_listfragment" />-->
 
             <View
                 android:layout_width="fill_parent"
@@ -55,6 +54,7 @@
                 android:background="@color/servCatDiv"/>
 
             <TextView
+                android:id="@+id/inactservLabel"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/inactServCat"
@@ -65,12 +65,11 @@
                 android:paddingRight="@dimen/servCatPad"
                 android:paddingBottom="@dimen/servCatPad" />
 
-            <fragment android:name="com.shudas.blueprinter.InactiveServListFrag"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                tools:layout="@layout/inactiveserv_listfragment" />
+            <!--<fragment android:name="com.shudas.blueprinter.InactiveServListFrag"-->
+                <!--android:layout_width="fill_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--tools:layout="@layout/inactiveserv_listfragment" />-->
 
         </LinearLayout>
 
     </ScrollView>
-</LinearLayout>

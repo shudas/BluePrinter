@@ -9,16 +9,34 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 
 public class PrintActivity extends ActionBarActivity {
 
+    private static final java.lang.String ALL_OPTS_ENABLED = "ALL_OPTS_ENABLED";
     boolean alloptsenabled = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_print);
+
+        // if opts were enabled, then reenable them in case orientation changed
+        if (savedInstanceState != null) {
+            alloptsenabled = savedInstanceState.getBoolean(ALL_OPTS_ENABLED);
+            if (alloptsenabled) {
+                disableEnableControls(true, (ViewGroup) findViewById(R.id.allopts));
+            }
+            else {
+                // Disable all options until printer is selected
+                disableEnableControls(false, (ViewGroup) findViewById(R.id.allopts));
+            }
+        }
+        else {
+            // Disable all options until printer is selected
+            disableEnableControls(false, (ViewGroup) findViewById(R.id.allopts));
+        }
 
         // Set up spinners
         Spinner ppsspinner = (Spinner) findViewById(R.id.pagesPerSheet);
@@ -33,9 +51,6 @@ public class PrintActivity extends ActionBarActivity {
         duplexadapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         duplexspinner.setAdapter(duplexadapter);
 
-        // Disable all options until printer is selected
-        disableEnableControls(false, (ViewGroup) findViewById(R.id.allopts));
-
         // set on click listener for printer selector
         findViewById(R.id.selectPrinterTV).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -45,6 +60,12 @@ public class PrintActivity extends ActionBarActivity {
                 alloptsenabled = true;
             }
         });
+    }
+
+    @Override
+    protected void onSaveInstanceState (Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putBoolean(ALL_OPTS_ENABLED, alloptsenabled);
     }
 
     // disable/enable all children
