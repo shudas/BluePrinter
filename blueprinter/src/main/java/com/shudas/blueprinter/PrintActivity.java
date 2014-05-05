@@ -4,6 +4,8 @@ import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
 
 
 public class PrintActivity extends ActionBarActivity {
@@ -12,6 +14,23 @@ public class PrintActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_print);
+        Spinner ppsspinner = (Spinner) findViewById(R.id.pagesPerSheet);
+        // Create an ArrayAdapter using the string array and a default spinner layout
+        ArrayAdapter<CharSequence> ppsadapter = ArrayAdapter.createFromResource(this,
+                R.array.pps_choices, android.R.layout.simple_spinner_item);
+        // Specify the layout to use when the list of choices appears
+        ppsadapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        // Apply the adapter to the spinner
+        ppsspinner.setAdapter(ppsadapter);
+
+        Spinner duplexspinner = (Spinner) findViewById(R.id.duplexOpt);
+        // Create an ArrayAdapter using the string array and a default spinner layout
+        ArrayAdapter<CharSequence> duplexadapter = ArrayAdapter.createFromResource(this,
+                R.array.duplex_choices, android.R.layout.simple_spinner_item);
+        // Specify the layout to use when the list of choices appears
+        duplexadapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        // Apply the adapter to the spinner
+        duplexspinner.setAdapter(duplexadapter);
     }
 
 
