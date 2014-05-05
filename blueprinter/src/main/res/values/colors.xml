@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="maize">#ffcb05</color>
+    <color name="blue">#00274c</color>
+    <color name="servCat">#e4e1df</color>
+    <color name="servCatDiv">#989c97</color>
+    <color name="select">#cfc096</color>
+    <color name="printClick">#25C22f</color>
+</resources>

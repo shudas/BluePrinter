@@ -1,0 +1,65 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.shudas.blueprinter.FilesFragment"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/savedFilesCat"
+        android:textSize="@dimen/servTextSize"
+        android:padding="@dimen/servTextPad"
+        android:id="@+id/savedFilesCatTV"
+        android:clickable="true"
+        android:background="@drawable/my_selector"/>
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="1dp"
+        android:background="@color/servCatDiv"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/connServCat"
+        android:textSize="@dimen/servCatTextSize"
+        android:background="@color/servCat"
+        android:paddingLeft="@dimen/servCatPadL"
+        android:paddingTop="@dimen/servCatPad"
+        android:paddingRight="@dimen/servCatPad"
+        android:paddingBottom="@dimen/servCatPad" />
+
+    <!--<ListView-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:id="@+id/connServList" />-->
+
+    <fragment android:name="com.shudas.blueprinter.ActiveServListFrag"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:layout="@layout/activeserv_listfragment" />
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="1dp"
+        android:background="@color/servCatDiv"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/inactServCat"
+        android:textSize="@dimen/servCatTextSize"
+        android:background="@color/servCat"
+        android:paddingLeft="@dimen/servCatPadL"
+        android:paddingTop="@dimen/servCatPad"
+        android:paddingRight="@dimen/servCatPad"
+        android:paddingBottom="@dimen/servCatPad" />
+
+    <fragment android:name="com.shudas.blueprinter.InactiveServListFrag"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:layout="@layout/inactiveserv_listfragment" />
+
+</LinearLayout>

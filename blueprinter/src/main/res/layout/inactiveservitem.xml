@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/my_selector">
+
+    <TextView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/savedFilesCat"
+        android:textSize="@dimen/servTextSize"
+        android:paddingLeft="@dimen/servTextPad"
+        android:paddingTop="@dimen/servTextPad"
+        android:paddingRight="@dimen/servTextPad"
+        android:id="@+id/servTV"/>
+
+    <TextView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/tapToConn"
+        android:textSize="@dimen/tapToConnSize"
+        android:paddingLeft="@dimen/servTextPad"
+        android:paddingRight="@dimen/servTextPad"
+        android:paddingBottom="@dimen/servCatPad"
+        android:textColor="@color/servCatDiv"/>
+
+</LinearLayout>

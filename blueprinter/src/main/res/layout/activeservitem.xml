@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/savedFilesCat"
+        android:textSize="@dimen/servTextSize"
+        android:padding="@dimen/servTextPad"
+        android:id="@+id/servTV"
+        android:background="@drawable/my_selector"/>
+
+    <!--android:paddingLeft="@dimen/servCatPadL"-->
+    <!--android:paddingTop="@dimen/servCatPad"-->
+    <!--android:paddingRight="@dimen/servCatPad"-->
+    <!--android:paddingBottom="@dimen/servCatPad"-->
