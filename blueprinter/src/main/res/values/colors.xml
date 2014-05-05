@@ -6,4 +6,5 @@
     <color name="servCatDiv">#989c97</color>
     <color name="select">#cfc096</color>
     <color name="printClick">#25C22f</color>
+    <color name="printUnClick">#0b9e15</color>
 </resources>

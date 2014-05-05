@@ -4,35 +4,59 @@ import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
+import android.widget.TextView;
 
 
 public class PrintActivity extends ActionBarActivity {
+
+    boolean alloptsenabled = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_print);
+
+        // Set up spinners
         Spinner ppsspinner = (Spinner) findViewById(R.id.pagesPerSheet);
-        // Create an ArrayAdapter using the string array and a default spinner layout
         ArrayAdapter<CharSequence> ppsadapter = ArrayAdapter.createFromResource(this,
                 R.array.pps_choices, android.R.layout.simple_spinner_item);
-        // Specify the layout to use when the list of choices appears
         ppsadapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        // Apply the adapter to the spinner
         ppsspinner.setAdapter(ppsadapter);
 
         Spinner duplexspinner = (Spinner) findViewById(R.id.duplexOpt);
-        // Create an ArrayAdapter using the string array and a default spinner layout
         ArrayAdapter<CharSequence> duplexadapter = ArrayAdapter.createFromResource(this,
                 R.array.duplex_choices, android.R.layout.simple_spinner_item);
-        // Specify the layout to use when the list of choices appears
         duplexadapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        // Apply the adapter to the spinner
         duplexspinner.setAdapter(duplexadapter);
+
+        // Disable all options until printer is selected
+        disableEnableControls(false, (ViewGroup) findViewById(R.id.allopts));
+
+        // set on click listener for printer selector
+        findViewById(R.id.selectPrinterTV).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (alloptsenabled) return;
+                disableEnableControls(true, (ViewGroup) findViewById(R.id.allopts));
+                alloptsenabled = true;
+            }
+        });
     }
 
+    // disable/enable all children
+    private void disableEnableControls(boolean enable, ViewGroup vg){
+        for (int i = 0; i < vg.getChildCount(); i++){
+            View child = vg.getChildAt(i);
+            child.setEnabled(enable);
+            if (child instanceof ViewGroup){
+                disableEnableControls(enable, (ViewGroup)child);
+            }
+        }
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

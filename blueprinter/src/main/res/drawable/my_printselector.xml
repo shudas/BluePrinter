@@ -8,6 +8,6 @@
         android:drawable="@color/printClick"/>
 
     <item
-        android:drawable="@android:color/transparent" />
+        android:drawable="@color/printUnClick" />
 
 </selector>
