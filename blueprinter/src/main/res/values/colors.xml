@@ -5,6 +5,9 @@
     <color name="servCat">#e4e1df</color>
     <color name="servCatDiv">#989c97</color>
     <color name="select">#cfc096</color>
-    <color name="printClick">#25C22f</color>
+    <color name="printClick">#25c22f</color>
     <color name="printUnClick">#0b9e15</color>
+    <color name="printFont">#ffffff</color>
+    <color name="success">#25c22f</color>
+    <color name="fail">#ff0000</color>
 </resources>

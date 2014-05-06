@@ -92,7 +92,6 @@
                         android:layout_alignParentTop="false"
                         android:layout_alignParentRight="true"
                         android:layout_alignParentEnd="true"
-                        android:inputType="number"
                         android:hint="e.g. 1-4,7,9-12" />
                 </RelativeLayout>
 
@@ -212,18 +211,21 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Fit to page"
+                        android:text="Scaling"
                         android:layout_alignParentLeft="true"
                         android:layout_alignParentStart="true"
                         android:textSize="@dimen/servTextSize"
                         android:layout_centerVertical="true" />
 
                     <ToggleButton
+                        android:id="@+id/fittopageTB"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentRight="true"
                         android:layout_alignParentEnd="true"
                         android:textSize="@dimen/servCatTextSize"
+                        android:textOff="Do not scale"
+                        android:textOn="Fit to page"
                         android:checked="true" />
 
                 </RelativeLayout>
@@ -246,7 +248,7 @@
                     android:background="@drawable/my_printselector"
                     android:layout_alignParentBottom="true"
                     android:layout_alignParentEnd="true"
-                    android:textColor="@android:color/white"/>
+                    android:textColor="@color/printFont"/>
 
             </LinearLayout>
 

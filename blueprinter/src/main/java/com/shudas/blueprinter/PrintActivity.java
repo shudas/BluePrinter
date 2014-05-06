@@ -10,12 +10,15 @@ import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.ToggleButton;
 
 
 public class PrintActivity extends ActionBarActivity {
 
-    private static final java.lang.String ALL_OPTS_ENABLED = "ALL_OPTS_ENABLED";
+    private static final String ALL_OPTS_ENABLED = "ALL_OPTS_ENABLED";
+    private static final String FIT_TO_PAGE = "FIT_TO_PAGE";
     boolean alloptsenabled = false;
+    boolean fittopage = true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,6 +28,7 @@ public class PrintActivity extends ActionBarActivity {
         // if opts were enabled, then reenable them in case orientation changed
         if (savedInstanceState != null) {
             alloptsenabled = savedInstanceState.getBoolean(ALL_OPTS_ENABLED);
+            fittopage = savedInstanceState.getBoolean(FIT_TO_PAGE);
             if (alloptsenabled) {
                 disableEnableControls(true, (ViewGroup) findViewById(R.id.allopts));
             }
@@ -37,6 +41,9 @@ public class PrintActivity extends ActionBarActivity {
             // Disable all options until printer is selected
             disableEnableControls(false, (ViewGroup) findViewById(R.id.allopts));
         }
+
+        // set the fit to page param
+//        ((ToggleButton) findViewById(R.id.fittopageTB)).setChecked(fittopage);
 
         // Set up spinners
         Spinner ppsspinner = (Spinner) findViewById(R.id.pagesPerSheet);
@@ -66,6 +73,7 @@ public class PrintActivity extends ActionBarActivity {
     protected void onSaveInstanceState (Bundle outState) {
         super.onSaveInstanceState(outState);
         outState.putBoolean(ALL_OPTS_ENABLED, alloptsenabled);
+        outState.putBoolean(FIT_TO_PAGE, fittopage);
     }
 
     // disable/enable all children
