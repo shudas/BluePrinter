@@ -11,12 +11,17 @@
         android:paddingLeft="@dimen/jobsucColorSize"/>
 
     <LinearLayout
-        android:padding="@dimen/servTextPad"
+        android:paddingLeft="@dimen/servTextPad"
+        android:paddingRight="@dimen/servTextPad"
+        android:paddingTop="@dimen/servCatPad"
+        android:paddingBottom="@dimen/servCatPad"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
         <TextView
+            android:ellipsize="middle"
+            android:singleLine="true"
             android:id="@+id/jobinfoFile"
             android:text="@string/tapToConn"
             android:textSize="@dimen/servTextSize"
@@ -24,6 +29,8 @@
             android:layout_height="wrap_content" />
 
         <TextView
+            android:ellipsize="middle"
+            android:singleLine="true"
             android:id="@+id/jobinfoSubmit"
             android:text="Submitted 01/01/01 1:01 pm"
             android:textSize="@dimen/servCatTextSize"
@@ -31,6 +38,8 @@
             android:layout_height="wrap_content" />
 
         <TextView
+            android:ellipsize="middle"
+            android:singleLine="true"
             android:id="@+id/jobinfoLoc"
             android:text="Location Yo"
             android:textSize="@dimen/servCatTextSize"
