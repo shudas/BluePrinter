@@ -19,6 +19,9 @@ import android.view.ViewGroup;
 
 public class MainActivity extends ActionBarActivity implements ActionBar.TabListener {
 
+    // used when other activities call this activity
+    public static final String TAB_TO_OPEN = "TAB_TO_OPEN";
+
     /**
      * The {@link android.support.v4.view.PagerAdapter} that will provide
      * fragments for each of the sections. We use a
@@ -72,8 +75,23 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
                             .setText(mSectionsPagerAdapter.getPageTitle(i))
                             .setTabListener(this));
         }
+
+        if (savedInstanceState == null) {
+            Bundle extras = getIntent().getExtras();
+            if (extras != null) {
+                mViewPager.setCurrentItem(extras.getInt(TAB_TO_OPEN));
+            }
+        } else {
+            System.out.println("yo");
+            mViewPager.setCurrentItem(savedInstanceState.getInt(TAB_TO_OPEN));
+        }
     }
 
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState); // the UI component values are saved here.
+        outState.putInt(TAB_TO_OPEN, mViewPager.getCurrentItem());
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

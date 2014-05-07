@@ -2,12 +2,12 @@
     <!-- Default screen margins, per the Android Design guidelines. -->
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
-    <dimen name="servTextSize">24dp</dimen>
+    <dimen name="servTextSize">24sp</dimen>
     <dimen name="servTextPad">12dp</dimen>
-    <dimen name="servCatTextSize">16dp</dimen>
+    <dimen name="servCatTextSize">16sp</dimen>
     <dimen name="servCatPad">8dp</dimen>
     <dimen name="servCatPadL">12dp</dimen>
-    <dimen name="tapToConnSize">12dp</dimen>
+    <dimen name="tapToConnSize">12sp</dimen>
     <dimen name="divPad">4dp</dimen>
     <dimen name="viewWithTogglePadTop">6dp</dimen>
     <dimen name="jobsucColorSize">24dp</dimen>

@@ -17,6 +17,7 @@
             </intent-filter>
         </activity>
         <activity
+            android:noHistory="true"
             android:name="com.shudas.blueprinter.PrintActivity"
             android:label="@string/title_activity_print"
             android:parentActivityName="com.shudas.blueprinter.MainActivity" >

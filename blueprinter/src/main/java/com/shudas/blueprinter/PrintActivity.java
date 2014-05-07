@@ -1,5 +1,6 @@
 package com.shudas.blueprinter;
 
+import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -8,17 +9,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
-import android.widget.TextView;
-import android.widget.Toast;
-import android.widget.ToggleButton;
 
 
 public class PrintActivity extends ActionBarActivity {
 
     private static final String ALL_OPTS_ENABLED = "ALL_OPTS_ENABLED";
-    private static final String FIT_TO_PAGE = "FIT_TO_PAGE";
     boolean alloptsenabled = false;
-    boolean fittopage = true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,7 +24,6 @@ public class PrintActivity extends ActionBarActivity {
         // if opts were enabled, then reenable them in case orientation changed
         if (savedInstanceState != null) {
             alloptsenabled = savedInstanceState.getBoolean(ALL_OPTS_ENABLED);
-            fittopage = savedInstanceState.getBoolean(FIT_TO_PAGE);
             if (alloptsenabled) {
                 disableEnableControls(true, (ViewGroup) findViewById(R.id.allopts));
             }
@@ -73,7 +68,6 @@ public class PrintActivity extends ActionBarActivity {
     protected void onSaveInstanceState (Bundle outState) {
         super.onSaveInstanceState(outState);
         outState.putBoolean(ALL_OPTS_ENABLED, alloptsenabled);
-        outState.putBoolean(FIT_TO_PAGE, fittopage);
     }
 
     // disable/enable all children
@@ -85,6 +79,13 @@ public class PrintActivity extends ActionBarActivity {
                 disableEnableControls(enable, (ViewGroup)child);
             }
         }
+    }
+
+    public void printClicked(View v) {
+        Intent intent = new Intent(this, MainActivity.class);
+        // indicates we should open jobs tab
+        intent.putExtra(MainActivity.TAB_TO_OPEN, 1);
+        startActivity(intent);
     }
 
     @Override

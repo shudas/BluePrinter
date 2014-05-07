@@ -1,261 +1,261 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:tools="http://schemas.android.com/tools"
+android:orientation="vertical"
+android:layout_width="fill_parent"
+android:layout_height="match_parent"
+tools:context="com.shudas.blueprinter.PrintActivity">
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
     android:layout_width="fill_parent"
     android:layout_height="match_parent"
-    tools:context="com.shudas.blueprinter.PrintActivity">
-    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
+    android:layout_alignParentTop="true"
+    android:layout_alignParentStart="true">
+    <LinearLayout
+        android:orientation="vertical"
         android:layout_width="fill_parent"
         android:layout_height="match_parent"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true">
-        <LinearLayout
-            android:orientation="vertical"
+        tools:context="com.shudas.blueprinter.PrintActivity">
+
+        <TextView
             android:layout_width="fill_parent"
-            android:layout_height="match_parent"
-            tools:context="com.shudas.blueprinter.PrintActivity">
+            android:layout_height="wrap_content"
+            android:text="@string/selectPrinter"
+            android:textSize="@dimen/servTextSize"
+            android:padding="@dimen/servTextPad"
+            android:id="@+id/selectPrinterTV"
+            android:clickable="true"
+            android:background="@drawable/my_selector"
+            android:focusable="true"
+            android:focusableInTouchMode="true" />
+
+        <LinearLayout
+            android:id="@+id/allopts"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:focusable="false">
+
+            <include
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                layout="@layout/myseperator"
+                android:layout_gravity="right" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/servTextPad">
+
+                <TextView
+                    android:id="@+id/numCopyTV"
+                    android:textSize="@dimen/servTextSize"
+                    android:text="Copies"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <EditText
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/copies"
+                    android:layout_alignParentTop="false"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentEnd="true"
+                    android:inputType="number"
+                    android:text="1"/>
+
+            </RelativeLayout>
+
+            <View
+                android:layout_marginLeft="@dimen/servTextPad"
+                android:layout_marginRight="@dimen/servTextPad"
+                android:layout_width="fill_parent"
+                android:layout_height="1dp"
+                android:background="@color/servCatDiv"/>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/servTextPad">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Range"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:textSize="@dimen/servTextSize" />
+
+                <EditText
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/range"
+                    android:layout_alignParentTop="false"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentEnd="true"
+                    android:hint="e.g. 1-4,7,9-12" />
+            </RelativeLayout>
+
+            <include
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                layout="@layout/myseperator"
+                android:layout_gravity="right" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="@dimen/servTextPad"
+                android:paddingRight="@dimen/servTextPad"
+                android:paddingTop="@dimen/viewWithTogglePadTop"
+                android:paddingBottom="@dimen/viewWithTogglePadTop">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Orientation"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:textSize="@dimen/servTextSize"
+                    android:layout_centerVertical="true" />
+
+                <ToggleButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentEnd="true"
+                    android:id="@+id/orientToggle"
+                    android:textSize="@dimen/servCatTextSize"
+                    android:textOff="Horizontal"
+                    android:textOn="Vertical"
+                    android:checked="true"/>
+
+            </RelativeLayout>
+
+            <View
+                android:layout_marginLeft="@dimen/servTextPad"
+                android:layout_marginRight="@dimen/servTextPad"
+                android:layout_width="fill_parent"
+                android:layout_height="1dp"
+                android:background="@color/servCatDiv"/>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/servTextPad">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/ppsopt"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:textSize="@dimen/servTextSize"
+                    android:layout_centerVertical="true" />
+
+                <Spinner
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/pagesPerSheet"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentEnd="true"
+                    android:textSize="@dimen/servTextSize" />
+
+            </RelativeLayout>
+
+            <View
+                android:layout_marginLeft="@dimen/servTextPad"
+                android:layout_marginRight="@dimen/servTextPad"
+                android:layout_width="fill_parent"
+                android:layout_height="1dp"
+                android:background="@color/servCatDiv"/>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/servTextPad">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/duplexOpt"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:textSize="@dimen/servTextSize"
+                    android:layout_centerVertical="true" />
+
+                <Spinner
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/duplexOpt"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentEnd="true"
+                    android:textSize="@dimen/servTextSize" />
+
+            </RelativeLayout>
+
+            <View
+                android:layout_marginLeft="@dimen/servTextPad"
+                android:layout_marginRight="@dimen/servTextPad"
+                android:layout_width="fill_parent"
+                android:layout_height="1dp"
+                android:background="@color/servCatDiv"/>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="@dimen/servTextPad"
+                android:paddingRight="@dimen/servTextPad"
+                android:paddingTop="@dimen/viewWithTogglePadTop"
+                android:paddingBottom="@dimen/viewWithTogglePadTop">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Scaling"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:textSize="@dimen/servTextSize"
+                    android:layout_centerVertical="true" />
+
+                <ToggleButton
+                    android:id="@+id/fittopageTB"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentEnd="true"
+                    android:textSize="@dimen/servCatTextSize"
+                    android:textOff="Do not scale"
+                    android:textOn="Fit to page"
+                    android:checked="true" />
+
+            </RelativeLayout>
+
+            <include
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                layout="@layout/myseperator"
+                android:layout_gravity="right" />
 
             <TextView
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/selectPrinter"
+                android:text="Print"
+                android:clickable="true"
+                android:gravity="center"
                 android:textSize="@dimen/servTextSize"
                 android:padding="@dimen/servTextPad"
-                android:id="@+id/selectPrinterTV"
-                android:clickable="true"
-                android:background="@drawable/my_selector"
-                android:focusable="true"
-                android:focusableInTouchMode="true" />
-
-            <LinearLayout
-                android:id="@+id/allopts"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:focusable="false">
-
-                <include
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    layout="@layout/myseperator"
-                    android:layout_gravity="right" />
-
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:padding="@dimen/servTextPad">
-
-                    <TextView
-                        android:id="@+id/numCopyTV"
-                        android:textSize="@dimen/servTextSize"
-                        android:text="Copies"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
-
-                    <EditText
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/copies"
-                        android:layout_alignParentTop="false"
-                        android:layout_alignParentRight="true"
-                        android:layout_alignParentEnd="true"
-                        android:inputType="number"
-                        android:text="1"/>
-
-                </RelativeLayout>
-
-                <View
-                    android:layout_marginLeft="@dimen/servTextPad"
-                    android:layout_marginRight="@dimen/servTextPad"
-                    android:layout_width="fill_parent"
-                    android:layout_height="1dp"
-                    android:background="@color/servCatDiv"/>
-
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:padding="@dimen/servTextPad">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Range"
-                        android:layout_alignParentLeft="true"
-                        android:layout_alignParentStart="true"
-                        android:textSize="@dimen/servTextSize" />
-
-                    <EditText
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/range"
-                        android:layout_alignParentTop="false"
-                        android:layout_alignParentRight="true"
-                        android:layout_alignParentEnd="true"
-                        android:hint="e.g. 1-4,7,9-12" />
-                </RelativeLayout>
-
-                <include
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    layout="@layout/myseperator"
-                    android:layout_gravity="right" />
-
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:paddingLeft="@dimen/servTextPad"
-                    android:paddingRight="@dimen/servTextPad"
-                    android:paddingTop="@dimen/viewWithTogglePadTop"
-                    android:paddingBottom="@dimen/viewWithTogglePadTop">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Orientation"
-                        android:layout_alignParentLeft="true"
-                        android:layout_alignParentStart="true"
-                        android:textSize="@dimen/servTextSize"
-                        android:layout_centerVertical="true" />
-
-                    <ToggleButton
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentRight="true"
-                        android:layout_alignParentEnd="true"
-                        android:id="@+id/orientToggle"
-                        android:textSize="@dimen/servCatTextSize"
-                        android:textOff="Horizontal"
-                        android:textOn="Vertical"
-                        android:checked="true"/>
-
-                </RelativeLayout>
-
-                <View
-                    android:layout_marginLeft="@dimen/servTextPad"
-                    android:layout_marginRight="@dimen/servTextPad"
-                    android:layout_width="fill_parent"
-                    android:layout_height="1dp"
-                    android:background="@color/servCatDiv"/>
-
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:padding="@dimen/servTextPad">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/ppsopt"
-                        android:layout_alignParentLeft="true"
-                        android:layout_alignParentStart="true"
-                        android:textSize="@dimen/servTextSize"
-                        android:layout_centerVertical="true" />
-
-                    <Spinner
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/pagesPerSheet"
-                        android:layout_alignParentRight="true"
-                        android:layout_alignParentEnd="true"
-                        android:textSize="@dimen/servTextSize" />
-
-                </RelativeLayout>
-
-                <View
-                    android:layout_marginLeft="@dimen/servTextPad"
-                    android:layout_marginRight="@dimen/servTextPad"
-                    android:layout_width="fill_parent"
-                    android:layout_height="1dp"
-                    android:background="@color/servCatDiv"/>
-
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:padding="@dimen/servTextPad">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/duplexOpt"
-                        android:layout_alignParentLeft="true"
-                        android:layout_alignParentStart="true"
-                        android:textSize="@dimen/servTextSize"
-                        android:layout_centerVertical="true" />
-
-                    <Spinner
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/duplexOpt"
-                        android:layout_alignParentRight="true"
-                        android:layout_alignParentEnd="true"
-                        android:textSize="@dimen/servTextSize" />
-
-                </RelativeLayout>
-
-                <View
-                    android:layout_marginLeft="@dimen/servTextPad"
-                    android:layout_marginRight="@dimen/servTextPad"
-                    android:layout_width="fill_parent"
-                    android:layout_height="1dp"
-                    android:background="@color/servCatDiv"/>
-
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:paddingLeft="@dimen/servTextPad"
-                    android:paddingRight="@dimen/servTextPad"
-                    android:paddingTop="@dimen/viewWithTogglePadTop"
-                    android:paddingBottom="@dimen/viewWithTogglePadTop">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Scaling"
-                        android:layout_alignParentLeft="true"
-                        android:layout_alignParentStart="true"
-                        android:textSize="@dimen/servTextSize"
-                        android:layout_centerVertical="true" />
-
-                    <ToggleButton
-                        android:id="@+id/fittopageTB"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentRight="true"
-                        android:layout_alignParentEnd="true"
-                        android:textSize="@dimen/servCatTextSize"
-                        android:textOff="Do not scale"
-                        android:textOn="Fit to page"
-                        android:checked="true" />
-
-                </RelativeLayout>
-
-                <include
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    layout="@layout/myseperator"
-                    android:layout_gravity="right" />
-
-                <TextView
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Print"
-                    android:clickable="true"
-                    android:gravity="center"
-                    android:textSize="@dimen/servTextSize"
-                    android:padding="@dimen/servTextPad"
-                    android:enabled="true"
-                    android:background="@drawable/my_printselector"
-                    android:layout_alignParentBottom="true"
-                    android:layout_alignParentEnd="true"
-                    android:textColor="@color/printFont"/>
-
-            </LinearLayout>
-
+                android:enabled="true"
+                android:background="@drawable/my_printselector"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentEnd="true"
+                android:textColor="@color/printFont"
+                android:onClick="printClicked"/>
 
         </LinearLayout>
 
-    </ScrollView>
+
+    </LinearLayout>
+
+</ScrollView>
 
 </RelativeLayout>
-
