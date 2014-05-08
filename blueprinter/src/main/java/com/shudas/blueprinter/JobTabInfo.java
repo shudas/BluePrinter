@@ -1,10 +1,13 @@
 package com.shudas.blueprinter;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import java.util.ArrayList;
 import java.util.Random;
 
 // Contains information about any previously completed job
-public class JobTabInfo {
+public class JobTabInfo implements Parcelable {
     public boolean success;
     public String filename;
     public String time;
@@ -17,6 +20,42 @@ public class JobTabInfo {
         location = _loc;
 
     }
+
+    public JobTabInfo(Parcel parcel) {
+        if (parcel.readInt() == 1) success = true;
+        else success = false;
+        filename = parcel.readString();
+        time = parcel.readString();
+        location = parcel.readString();
+
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel parcel, int i) {
+        if (success) parcel.writeInt(1);
+        else parcel.writeInt(0);
+        parcel.writeString(filename);
+        parcel.writeString(time);
+        parcel.writeString(location);
+    }
+
+    public static final Creator<JobTabInfo> CREATOR = new Creator<JobTabInfo>(){
+
+        @Override
+        public JobTabInfo createFromParcel(Parcel parcel) {
+            return new JobTabInfo(parcel);
+        }
+
+        @Override
+        public JobTabInfo[] newArray(int size) {
+            return new JobTabInfo[size];
+        }
+    };
 
     public static ArrayList<JobTabInfo> genRandomJobs(int numToGen) {
         if (numToGen < 0) {

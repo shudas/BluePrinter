@@ -18,16 +18,22 @@ import java.util.zip.Inflater;
 
 public class JobsFragment extends ListFragment {
 
+    ArrayList<JobTabInfo> jobs;
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        jobs = JobTabInfo.genRandomJobs(100);
+        // Retain this fragment across configuration changes.
+        setRetainInstance(true);
+    }
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-//        View v = inflater.inflate(R.layout.fragment_jobs, container, false);
-//        ListView lv = (ListView) v.findViewById(R.id.jobsLV);
-        ArrayList<JobTabInfo> jobs = JobTabInfo.genRandomJobs(15);
         JobsArrayAdapter adapter = new JobsArrayAdapter(inflater.getContext(), jobs);
-//        lv.setAdapter(adapter);
         setListAdapter(adapter);
-//        return v;
         return super.onCreateView(inflater, container, savedInstanceState);
     }
+
 }

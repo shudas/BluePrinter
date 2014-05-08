@@ -63,6 +63,7 @@ public class FilesFragment extends Fragment {
 
     public void onOptionClicked(View v, Context c) {
         Intent intent = new Intent(c, PrintActivity.class);
-        startActivity(intent);
+        System.out.print("first "); System.out.println(MainActivity.PRINT_REQUEST);
+        startActivityForResult(intent, MainActivity.PRINT_REQUEST);
     }
 }

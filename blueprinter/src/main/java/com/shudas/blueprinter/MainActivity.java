@@ -2,6 +2,7 @@ package com.shudas.blueprinter;
 
 import java.util.Locale;
 
+import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBar;
 import android.support.v4.app.Fragment;
@@ -18,6 +19,8 @@ import android.view.ViewGroup;
 
 
 public class MainActivity extends ActionBarActivity implements ActionBar.TabListener {
+
+    static int PRINT_REQUEST = 1;  // The request code
 
     // used when other activities call this activity
     public static final String TAB_TO_OPEN = "TAB_TO_OPEN";
@@ -94,6 +97,23 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
     }
 
     @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        System.out.println(requestCode);
+//        if (requestCode == PRINT_REQUEST) {
+            System.out.println("Yooo");
+            // user actually printed shit
+            if (resultCode == RESULT_OK) {
+                System.out.print("OKAY!!!");
+                JobTabInfo ret = data.getParcelableExtra(PrintActivity.RETURNED_JOB);
+                System.out.println(ret.filename);
+                // Go to jobs tab
+                mViewPager.setCurrentItem(1);
+            }
+//        }
+    }
+
+    @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.main, menu);
@@ -105,9 +125,11 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-        if (id == R.id.action_settings) {
-            return true;
+        switch (item.getItemId()) {
+            // Don't create new Activity with up nav
+            case android.R.id.home:
+                finish();
+                return true;
         }
         return super.onOptionsItemSelected(item);
     }

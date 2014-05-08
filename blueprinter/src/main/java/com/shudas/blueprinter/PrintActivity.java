@@ -13,6 +13,7 @@ import android.widget.Spinner;
 
 public class PrintActivity extends ActionBarActivity {
 
+    public static final String RETURNED_JOB = "RETURNED_JOB";
     private static final String ALL_OPTS_ENABLED = "ALL_OPTS_ENABLED";
     boolean alloptsenabled = false;
 
@@ -82,10 +83,12 @@ public class PrintActivity extends ActionBarActivity {
     }
 
     public void printClicked(View v) {
-        Intent intent = new Intent(this, MainActivity.class);
-        // indicates we should open jobs tab
-        intent.putExtra(MainActivity.TAB_TO_OPEN, 1);
-        startActivity(intent);
+        Intent intent = getIntent();
+        JobTabInfo info = new JobTabInfo(true, "TEST_SUCCESS_FILE", "Submitted my/da/te", "TEST_PRINTER");
+        intent.putExtra(RETURNED_JOB, info);
+        setResult(RESULT_OK, intent);
+        // Don't allow this activity to come back
+        finish();
     }
 
     @Override
