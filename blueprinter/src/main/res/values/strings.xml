@@ -16,6 +16,7 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="ppsopt">Pages per sheet</string>
     <string name="duplexOpt">Duplex</string>
+
     <string-array name="pps_choices">
         <item>1</item>
         <item>2</item>
@@ -29,5 +30,7 @@
         <item>Double-sided long edge</item>
         <item>Double-sided short edge</item>
     </string-array>
+
+    <string name="title_activity_select_printer">Select Printer</string>
 
 </resources>

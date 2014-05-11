@@ -9,12 +9,17 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
+import android.widget.TextView;
 
+import java.util.ArrayList;
 
 public class PrintActivity extends ActionBarActivity {
 
+    public static int SELECT_PRINTER_REQUEST = 2;
+
     public static final String RETURNED_JOB = "RETURNED_JOB";
     private static final String ALL_OPTS_ENABLED = "ALL_OPTS_ENABLED";
+    private static final String CURR_PRINTER = "CURR_PRINTER";
     boolean alloptsenabled = false;
 
     @Override
@@ -24,17 +29,19 @@ public class PrintActivity extends ActionBarActivity {
 
         // if opts were enabled, then reenable them in case orientation changed
         if (savedInstanceState != null) {
+            ((TextView) findViewById(R.id.selectPrinterTV))
+                    .setText(savedInstanceState.getString(CURR_PRINTER));
             alloptsenabled = savedInstanceState.getBoolean(ALL_OPTS_ENABLED);
             if (alloptsenabled) {
                 disableEnableControls(true, (ViewGroup) findViewById(R.id.allopts));
             }
             else {
-                // Disable all options until printer is selected
+                // Disable all options until name is selected
                 disableEnableControls(false, (ViewGroup) findViewById(R.id.allopts));
             }
         }
         else {
-            // Disable all options until printer is selected
+            // Disable all options until name is selected
             disableEnableControls(false, (ViewGroup) findViewById(R.id.allopts));
         }
 
@@ -54,21 +61,45 @@ public class PrintActivity extends ActionBarActivity {
         duplexadapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         duplexspinner.setAdapter(duplexadapter);
 
-        // set on click listener for printer selector
+        // set on click listener for name selector
         findViewById(R.id.selectPrinterTV).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (alloptsenabled) return;
-                disableEnableControls(true, (ViewGroup) findViewById(R.id.allopts));
-                alloptsenabled = true;
+                selectPrinterClicked(view);
+
             }
         });
+    }
+
+    private void selectPrinterClicked(View v) {
+        Intent intent = new Intent(this, SelectPrinterActivity.class);
+        startActivityForResult(intent, SELECT_PRINTER_REQUEST);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        System.out.println(requestCode);
+//        if (requestCode == PRINT_REQUEST) {
+//        System.out.println("Yooo");
+        // user actually selected a printer
+        if (resultCode == RESULT_OK) {
+            PrinterInfo ret = data.getParcelableExtra(SelectPrinterFragment.RETURNED_PRINTER);
+            ((TextView) findViewById(R.id.selectPrinterTV)).setText(ret.name);
+            // enable all controls
+            if (alloptsenabled) return;
+            disableEnableControls(true, (ViewGroup) findViewById(R.id.allopts));
+            alloptsenabled = true;
+        }
+//        }
     }
 
     @Override
     protected void onSaveInstanceState (Bundle outState) {
         super.onSaveInstanceState(outState);
         outState.putBoolean(ALL_OPTS_ENABLED, alloptsenabled);
+        outState.putString(CURR_PRINTER,
+                ((TextView) findViewById(R.id.selectPrinterTV)).getText().toString());
     }
 
     // disable/enable all children

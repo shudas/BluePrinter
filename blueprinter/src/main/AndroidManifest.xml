@@ -24,6 +24,14 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.shudas.blueprinter.MainActivity" />
         </activity>
+        <activity
+            android:name="com.shudas.blueprinter.SelectPrinterActivity"
+            android:label="@string/title_activity_select_printer"
+            android:parentActivityName="com.shudas.blueprinter.PrintActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="PrintActivity" />
+        </activity>
     </application>
 
 </manifest>
