@@ -3,6 +3,7 @@ package com.shudas.blueprinter;
 import java.util.Locale;
 
 import android.content.Intent;
+import android.support.v4.app.ListFragment;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBar;
 import android.support.v4.app.Fragment;
@@ -16,6 +17,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.ListAdapter;
 
 
 public class MainActivity extends ActionBarActivity implements ActionBar.TabListener {
@@ -99,17 +102,16 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         System.out.println(requestCode);
-//        if (requestCode == PRINT_REQUEST) {
-            System.out.println("Yooo");
-            // user actually printed shit
-            if (resultCode == RESULT_OK) {
-                System.out.print("OKAY!!!");
-                JobTabInfo ret = data.getParcelableExtra(PrintActivity.RETURNED_JOB);
-                System.out.println(ret.filename);
-                // Go to jobs tab
-                mViewPager.setCurrentItem(1);
-            }
-//        }
+        // user actually printed shit
+        if (resultCode == RESULT_OK) {
+            JobTabInfo ret = data.getParcelableExtra(PrintActivity.RETURNED_JOB);
+            System.out.println(ret.filename);
+            ArrayAdapter<JobTabInfo> adapter = (ArrayAdapter<JobTabInfo>)
+                ((ListFragment) mSectionsPagerAdapter.getItem(1)).getListAdapter();
+            adapter.insert(ret, 0);
+            // Go to jobs tab
+            mViewPager.setCurrentItem(1);
+        }
     }
 
     @Override
